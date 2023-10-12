@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Quote Card</title>
+</head>
+<body>
+
+    <audio id="background-audio" controls loop unmuted>
+        <source src="moonlight sonata.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="background">
+        <video autoplay muted loop class="video-card">
+            <source src="video 4.mp4" type="video/mp4">
+        </video>
+        <div class="gradient"></div>
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <p class="quote-mark"><i class="fa fa-quote-left"></i></p>
+                    <span>
+                        The best way to predict the future is to create it.
+                        <h6> ~ Peter Drucker</h6>
+                        <h6 class=brandtext> Created by Mike</h6>
+                    </span>
+                    <p class="quote-mark"><i class="fa fa-quote-right"></i></p>
+                </div>
+                <div class="card-back">
+                    <p class="quote-mark"><i class="fa fa-quote-left"></i></p>
+                    <span>
+                        Don't wait for opportunity. Create it.
+                        <h6> ~ George Bernard Shaw</h6>
+                        <h6 class=brandtext> Created by Mike</h6>
+                    </span>
+                    <p class="quote-mark"><i class="fa fa-quote-right"></i></p>
+             
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+
+        body {
+            margin: 0;
+            overflow: hidden;
+
+        }
+        
+        .background {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+        
+        h6{
+            margin-top: 2px;
+            font-size: 17px;
+            text-align: right;
+            font-weight: normal;
+        }
+
+        .video-card {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: drop 2s ease-in-out, fadeIn 1s 1s forwards, bounce 1s 3s both;
+        }
+
+
+        audio {
+            position: absolute;
+            top: 0;
+            left: 0;
+            visibility: hidden;
+        }
+
+
+
+        @keyframes drop {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            }
+
+        .card {
+            width: 600px;
+            height: 300px;
+            perspective: 1000px;
+            position: absolute;
+            bottom: 190px;
+            left: 25%;
+            right:25%;
+            transform: translateX(-50%);
+            visibility: hidden;
+            border-radius: 18px;
+            animation: cardFadeIn 1s 3.5s forwards;
+            
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Added box-shadow */
+            
+        }
+
+        
+
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+
+
+        @keyframes typing {
+        from {
+            width: 0;
+        }
+        to {
+            width: 100%;
+        }
+        }
+
+        @keyframes cardFadeIn {
+            0% {
+                transform: translateY(-100px);
+                visibility: hidden;
+            }
+            100% {
+                transform: translateY(0);
+                visibility: visible;
+            }
+        }
+
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.9s;
+            transform-style: preserve-3d;
+            
+
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Added box-shadow */
+            
+        }
+
+        .card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            font-size: 32px;
+            font-weight: bold;
+            z-index:8;
+            text-shadow: 0 0 1px #fff, 0 0 1.5px #fff, 0 0 2px #7aff33;
+            border-radius: 18px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Added box-shadow */
+            background: linear-gradient(10deg, rgba(7, 3, 253, 0.6), rgba(231, 251, 17, 0.9));
+
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            background: linear-gradient(10deg, rgba(253, 3, 7, 0.6), rgba(242, 248, 178, 0.9));
+        }
+
+
+
+    .quote-mark {
+        font-size: 50px;
+        color: #fff;
+        margin: 0 10px;
+        
+    }
+
+
+
+    .brandtext {
+        font-size: 16px;
+        font-weight: normal;
+        font-family: cursive;
+        color: rgba(0, 128, 255, 0.575);
+        z-index:10;
+        text-shadow: 0 0 18px #fff, 0 0 29px #fff, 0 0 35px #ffff00;
+        animation: blink 3s infinite alternate;
+    }
+
+
+
+
+</style>
+
+    <script>
+      // JavaScript to toggle audio play/pause on user clicks
+      const backgroundAudio = document.getElementById('background-audio');
+        let isAudioPlaying = false;
+
+        document.addEventListener('click', () => {
+            if (isAudioPlaying) {
+                backgroundAudio.pause();
+            } else {
+                backgroundAudio.muted = false;
+                backgroundAudio.play();
+            }
+            isAudioPlaying = !isAudioPlaying;
+        });
+
+    </script>
+</body>
+</html>
+
+
+
